@@ -1,9 +1,6 @@
 const fs = require('fs')
 const chalk = require('chalk')
 
-const getNotes = () => {
-    return "Your notes..."
-}
 
 const addNote = (title, body) => {
     const notes = loadNotes()
@@ -46,6 +43,7 @@ const listNotes = () => {
 const readNotes = (title) => {
     const notes = loadNotes()
     const noteToRead = notes.find( note => note.title === title )
+    //.find returns undefined if there is no match of the criteria 
     if( noteToRead === undefined ) {
         console.log( chalk.red("Note not found!!"))
     } else { 
@@ -70,7 +68,6 @@ const loadNotes = () => {
 }
 
 module.exports = {
-    getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
     listNotes: listNotes,
